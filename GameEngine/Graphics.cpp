@@ -18,33 +18,6 @@
 using std::vector;
 using namespace math;
 
-// This function loads a texture from file. Note: texture loading functions like these are usually 
-// managed by a 'Resource Manager' that manages all resources (like textures, models, audio). 
-// For learning purposes we'll just define it as a utility function.
-GLuint loadTexture(const GLchar* path)
-{
-	//Generate texture ID and load texture data 
-	GLuint textureID;
-	glGenTextures(1, &textureID);
-	int width, height;
-	unsigned char* image = SOIL_load_image(path, &width, &height, 0, SOIL_LOAD_RGBA);
-
-	//image = genFuckyImage(width, height);
-	// Assign texture to ID
-	glBindTexture(GL_TEXTURE_2D, textureID);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
-	glGenerateMipmap(GL_TEXTURE_2D);
-
-	// Parameters
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glBindTexture(GL_TEXTURE_2D, 0);
-	SOIL_free_image_data(image);
-	return textureID;
-}
-
 Shader sh;
 
 void Graphics::init()
@@ -54,7 +27,7 @@ void Graphics::init()
 
 	sh.setFloat("ambientStrength", 0);
 
-	sh.setVector3("spherePos", Vector3(0, 5, 20));
+	sh.setVector3("spherePos", Vector3(-5, 5, 20));
 	sh.setVector3("camPos", Vector3(0, 10, 0));
 	sh.setVector3("camRot", Vector3(.3f, 0, 0));
 
