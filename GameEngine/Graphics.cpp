@@ -10,8 +10,6 @@
 
 #include "Shader.h"
 #include "Matrix.h"
-#include "RenderData.h"
-#include "Ray.h"
 #include "print.h"
 #include "Mathcros.h"
 
