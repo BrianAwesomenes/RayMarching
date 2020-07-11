@@ -7,7 +7,6 @@
 #include <time.h>
 
 #include "Graphics.h"
-#include "Ray.h"
 
 #include "print.h"
 
@@ -27,12 +26,6 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
 int Init()
 {
 	srand(time(NULL));
-
-	Ray test = Ray(Point3(0, 0, 0), Vector3(3, 4, 5));
-
-	println(test.getDirection());
-
-	println(test.getDirection().magnitude());
 
 	GLFWwindow* window;
 	glfwSetErrorCallback(error_callback);
