@@ -36,12 +36,6 @@
     <ClCompile Include="PrintDefinitions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Ray.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderData.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vector.h">
@@ -57,12 +51,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Arr.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Ray.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Mathcros.h">

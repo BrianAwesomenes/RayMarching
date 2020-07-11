@@ -131,8 +131,6 @@
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="PrintDefinitions.cpp" />
-    <ClCompile Include="Ray.cpp" />
-    <ClCompile Include="RenderData.cpp" />
     <ClCompile Include="src\glad.c" />
     <ClCompile Include="Vector.cpp" />
   </ItemGroup>
@@ -142,8 +140,6 @@
     <ClInclude Include="Mathcros.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="print.h" />
-    <ClInclude Include="Ray.h" />
-    <ClInclude Include="RenderData.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="Vector.h" />
   </ItemGroup>
