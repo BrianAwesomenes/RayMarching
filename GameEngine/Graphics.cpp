@@ -23,21 +23,18 @@ void Graphics::init()
 	sh = Shader("testshader.vert", "testshader.frag");
 	sh.use();
 
-	sh.setFloat("ambientStrength", 0);
+	sh.setFloat("ambientStrength", 0.05);
 
 	sh.setVector3("spherePos", Vector3(-5, 5, 20));
 	sh.setVector3("camPos", Vector3(0, 10, 0));
 	sh.setVector3("camRot", Vector3(.3f, 0, 0));
 
-	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
 	glEnable(GL_DEPTH_TEST);
 }
 
 void Graphics::end()
 {
 }
-
-float baseBrightness = 5;
 
 /*
 void doThing(float fov) {
@@ -114,58 +111,21 @@ void Graphics::render()
 	glfwGetFramebufferSize(window, &width, &height);
 	ratio = width / (float)height;
 
+	//Set a screen width and height because for some reason they aren't built into GLSL
 	sh.setFloat("width", width);
 	sh.setFloat("height", height);
+
+	//Set object variables that change every frame
 	sh.setVector3("lightPos", Vector3(cosf((float)glfwGetTime()) * 10, 10, 20 + sinf((float)glfwGetTime()) * 10));
 	sh.setVector3("boxRot", Vector3(0, glfwGetTime(), 0));
-
-	/*
-	if (renderData == nullptr || renderData->getWidth() != width || renderData->getHeight() != height) {
-		renderData = new RenderData(width, height);
-
-		println("Retarget");
-
-		delete[] rays;
-		rays = new Ray[width * height];
-
-		int width = renderData->getWidth();
-		int height = renderData->getHeight();
-		float ratio = width / (float)height;
-
-		float fov = 75;
-
-		Vector3 origin = Vector3(0, 0, 0);
-
-		Vector3 fwd = Vector3(0, 0, 1);
-		Vector3 rgt = Vector3(1, 0, 0);
-		Vector3 up = fwd.cross(rgt);
-
-		float hDist = tanf(fov / 2);
-		float vDist = hDist / ratio;
-
-		float increment = hDist / (width / 2);
-		Vector3 offset = rgt * (increment / 2) + up * (increment / 2);
-
-		Vector3 start = origin + fwd - rgt * hDist - up * vDist;
-
-		for (int x = 0; x < width; x++) {
-			for (int y = 0; y < height; y++) {
-				Vector3 pos = start + offset + rgt * increment * x + up * increment * y;
-				Ray r = Ray(origin, pos - origin);
-
-				rays[y * width + x] = r;
-			}
-		}
-	}*/
-
-	//doThing(75);
-
-	//glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, renderData->getData());
-	//glGenerateMipmap(GL_TEXTURE_2D);
+	sh.setVector3("objColor", Vector3(1, 1, 1));
 
 	glViewport(0, 0, width, height);
+	//I don't know why drawing a single quad should need the depth buffer enabled, but everyting goes black when I turn it off.
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+	//Draw quad that fills the whole sceen.
+	//Everything gets rendered onto this quad
 	glBegin(GL_QUADS);
 	glTexCoord2f(0.0f, 0.0f); glVertex3f(-1.0f, 1.0f, -1);
 	glTexCoord2f(0.0f, 1.0f); glVertex3f(-1.0f, -1.0f, -1);

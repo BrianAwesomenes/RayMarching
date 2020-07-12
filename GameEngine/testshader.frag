@@ -7,6 +7,9 @@
 #define PI 3.14159265359
 #define SOFT_SHADOW_RADIUS 0.02
 
+//1 MB of data for object storage
+uniform int data[262144];
+
 uniform vec3 lightPos = vec3(0,10,25);
 uniform vec3 objColor = vec3(1, 1, 1);
 uniform vec3 diffuseColor = vec3(1, 1, 1);
