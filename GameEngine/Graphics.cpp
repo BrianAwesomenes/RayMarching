@@ -2,19 +2,10 @@
 
 #include "Graphics.h"
 
-#include <stdlib.h>
-#include <stdio.h>
 #include <SOIL.h>
-#include <vector>
 #include <math.h>
 
 #include "Shader.h"
-#include "Matrix.h"
-#include "print.h"
-#include "Mathcros.h"
-
-using std::vector;
-using namespace math;
 
 Shader sh;
 
