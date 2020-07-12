@@ -19,8 +19,6 @@ void Graphics::init()
 	sh.setVector3("spherePos", Vector3(-5, 5, 20));
 	sh.setVector3("camPos", Vector3(0, 10, 0));
 	sh.setVector3("camRot", Vector3(.3f, 0, 0));
-
-	glEnable(GL_DEPTH_TEST);
 }
 
 void Graphics::end()
@@ -112,8 +110,7 @@ void Graphics::render()
 	sh.setVector3("objColor", Vector3(1, 1, 1));
 
 	glViewport(0, 0, width, height);
-	//I don't know why drawing a single quad should need the depth buffer enabled, but everyting goes black when I turn it off.
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glClear(GL_COLOR_BUFFER_BIT);
 
 	//Draw quad that fills the whole sceen.
 	//Everything gets rendered onto this quad
